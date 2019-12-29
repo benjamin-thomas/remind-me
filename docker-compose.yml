@@ -18,6 +18,15 @@ services:
       - "127.0.0.3:3000:3000"
     depends_on:
       - db
+      - chrome
+
+  chrome:
+    image: selenium/standalone-chrome-debug
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - 5900:5900
+      - 4444:4444
 
 volumes:
   db-data:

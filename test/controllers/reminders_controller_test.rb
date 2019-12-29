@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RemindersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @reminder = reminders(:one)
+    @reminder = reminders(:buy_milk)
   end
 
   test "should get index" do
@@ -17,7 +17,7 @@ class RemindersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create reminder" do
     assert_difference('Reminder.count') do
-      post reminders_url, params: { reminder: {  } }
+      post reminders_url, params: { reminder: { descr: 'Do something'  } }
     end
 
     assert_redirected_to reminder_url(Reminder.last)
@@ -34,7 +34,7 @@ class RemindersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update reminder" do
-    patch reminder_url(@reminder), params: { reminder: {  } }
+    patch reminder_url(@reminder), params: { reminder: { descr: 'Do something, updated!'  } }
     assert_redirected_to reminder_url(@reminder)
   end
 

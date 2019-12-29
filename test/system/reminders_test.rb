@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class RemindersTest < ApplicationSystemTestCase
   setup do
-    @reminder = reminders(:one)
+    @reminder = reminders(:buy_milk)
   end
 
   test "visiting the index" do
