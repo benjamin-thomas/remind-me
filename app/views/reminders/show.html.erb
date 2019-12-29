@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Déclenchement le</h2>
+<%= @reminder.trigger_on %>
+
+<h3>Description</h3>
+<%= @reminder.descr %>
+
+<%= link_to 'Edit', edit_reminder_path(@reminder) %> |
+<%= link_to 'Back', reminders_path %>

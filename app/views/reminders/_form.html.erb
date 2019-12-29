@@ -1,0 +1,23 @@
+<%= form_with(model: reminder, local: true) do |f| %>
+  <% if reminder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(reminder.errors.count, "error") %> prohibited this reminder from being saved:</h2>
+
+      <ul>
+        <% reminder.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label(:descr, 'Description') %>
+  <%= f.text_area(:descr) %>
+
+  <%= f.label(:trigger_on, 'Déclencher le') %>
+  <%= f.datetime_field(:trigger_on) %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
