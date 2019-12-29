@@ -1,7 +1,14 @@
 # https://hub.docker.com/_/ruby
 FROM ruby:2.6-buster
 
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list && \
+  apt-get update -qq && \
+  apt-get install -y \
+    nodejs \
+    postgresql-client \
+    yarn \
+  && echo "Packages installed."
 
 RUN mkdir /app
 WORKDIR /app
@@ -19,10 +26,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 EXPOSE 3000
-
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
-RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y yarn
 
 # Start the main process.
 CMD ["rails", "server", "-b", "0.0.0.0"]
