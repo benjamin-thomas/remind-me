@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+buy_milk:
+  descr: Buy milk
+  trigger_on: <%= Time.zone.now + 1.hour %>
+
+buy_bread:
+  descr: Buy bread
+  trigger_on: <%= Time.zone.now - 1.hour %>
